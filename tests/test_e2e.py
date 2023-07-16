@@ -1,12 +1,13 @@
 import pytest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from Utilities.Utilities import BaseClass
 
 
-class TestOne(BaseClass):
-    def test_e2e(self):
+class TestOrderingPhone(BaseClass):
+    def test_orderingPhone(self):
         shopItem = self.driver.find_element(By.LINK_TEXT, "Shop")
         shopItem.click()
 
@@ -59,3 +60,29 @@ class TestOne(BaseClass):
 
         purchaseBtn = self.driver.find_element(By.CSS_SELECTOR, ".btn.btn-success.btn-lg")
         purchaseBtn.click()
+
+class TestSubmitAccountInfo(BaseClass):
+    def test_submittingAccountInformation(self):
+        nameSpace = self.driver.find_element(By.CSS_SELECTOR, ".form-control")
+        nameSpace.send_keys("David")
+
+        emailSpace = self.driver.find_element(By.NAME, "email")
+        emailSpace.send_keys("testEmail@gmail.com")
+
+        passwordSpace = self.driver.find_element(By.ID, "exampleInputPassword1")
+        passwordSpace.send_keys("test123")
+
+        iceCreamCheckBox = self.driver.find_element(By.ID, "exampleCheck1")
+        iceCreamCheckBox.click()
+
+        genderDropdown = Select(self.driver.find_element(By.ID, "exampleFormControlSelect1"))
+        genderDropdown.select_by_visible_text('Female')
+
+        employmentStatus = self.driver.find_element(By.ID, "exampleFormControlSelect1")
+        employmentStatus.click()
+
+        bday = self.driver.find_element(By.NAME, "bday")
+        bday.send_keys("01/01/2001")
+
+        submitBtn = self.driver.find_element(By.CLASS_NAME, "btn-success")
+        submitBtn.click()
