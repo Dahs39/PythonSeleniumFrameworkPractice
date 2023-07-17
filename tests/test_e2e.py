@@ -8,6 +8,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from Utilities.Utilities import BaseClass
+from PIL import Image
 
 
 class TestOrderingPhone(BaseClass):
@@ -80,6 +81,7 @@ class TestOrderingPhone(BaseClass):
         purchaseConfirmationPage.confirmPurchase().click()
         # purchaseBtn = self.driver.find_element(By.CSS_SELECTOR, ".btn.btn-success.btn-lg")
         # purchaseBtn.click()
+        self.driver.save_screenshot("PurchaseCompleted.png")
 
 class TestSubmitAccountInfo(BaseClass):
     def test_submittingAccountInformation(self):
@@ -106,3 +108,5 @@ class TestSubmitAccountInfo(BaseClass):
 
         submitBtn = self.driver.find_element(By.CLASS_NAME, "btn-success")
         submitBtn.click()
+
+        self.driver.save_screenshot("InfoSubmitCompleted.png")
