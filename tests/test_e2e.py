@@ -12,6 +12,8 @@ from PIL import Image
 
 
 class TestOrderingPhone(BaseClass):
+
+    # Test will order a Samsung Note 8 phone
     def test_orderingPhone(self):
         mainPage = MainPage(self.driver)
         shopPage = ShopPage(self.driver)
@@ -58,38 +60,26 @@ class TestOrderingPhone(BaseClass):
         self.driver.save_screenshot("PurchaseCompleted.png")
 
 class TestSubmitAccountInfo(BaseClass):
+
+    # Test will submit all details needed for registering an account
     def test_submittingAccountInformation(self):
         mainPage = MainPage(self.driver)
 
         mainPage.enterNameBox().send_keys("David")
-        # nameSpace = self.driver.find_element(By.CSS_SELECTOR, ".form-control")
-        # nameSpace.send_keys("David")
 
         mainPage.enterEmailBox().send_keys("testEmail@gmail.com")
-        # emailSpace = self.driver.find_element(By.NAME, "email")
-        # emailSpace.send_keys("testEmail@gmail.com")
 
         mainPage.enterPasswordBox().send_keys("test123")
-        # passwordSpace = self.driver.find_element(By.ID, "exampleInputPassword1")
-        # passwordSpace.send_keys("test123")
 
         mainPage.iceCreamCheckBox().click()
-        # iceCreamCheckBox = self.driver.find_element(By.ID, "exampleCheck1")
-        # iceCreamCheckBox.click()
 
         genderDropdown = Select(self.driver.find_element(By.ID, "exampleFormControlSelect1"))
         genderDropdown.select_by_visible_text('Female')
 
         mainPage.chooseEmploymentStatus().click()
-        # employmentStatus = self.driver.find_element(By.ID, "exampleFormControlSelect1")
-        # employmentStatus.click()
 
         mainPage.chooseBday().send_keys("01/01/2001")
-        # bday = self.driver.find_element(By.NAME, "bday")
-        # bday.send_keys("01/01/2001")
 
         mainPage.submitForm().click()
-        # submitBtn = self.driver.find_element(By.CLASS_NAME, "btn-success")
-        # submitBtn.click()
 
         self.driver.save_screenshot("InfoSubmitCompleted.png")
